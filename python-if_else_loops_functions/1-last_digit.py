@@ -8,7 +8,7 @@ number = random.randint(-10000, 10000)
 last_digit = abs(number) % 10
 
 # Se imprime el resultado según las condiciones dadas
-if number > 0 and last_digit == 0:
+if number > 0 or last_digit == 0:
     print(f"Last digit of {number} is {last_digit}", end=" ")
 else:
     print(f"Last digit of {number} is -{last_digit}", end=" ")
