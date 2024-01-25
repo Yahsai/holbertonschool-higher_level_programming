@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-ef fizzbuzz():
+def fizzbuzz():
     for num in range(1, 101):
         # Verifica si es múltiplo de ambos 3 y 5 primero
         if num % 3 == 0 and num % 5 == 0:
