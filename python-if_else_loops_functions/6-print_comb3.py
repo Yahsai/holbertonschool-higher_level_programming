@@ -6,4 +6,4 @@ for num in range(0, 10):
         elif num == 8 and pos == 9:
             print("{}{}".format(num, pos))
         else:
-            print("{}}{}".format(num, pos), end=", ")
+            print("{}{}".format(num, pos), end=", ")
