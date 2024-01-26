@@ -1,6 +1,8 @@
 #!/usr/bin/python3
-from variable_load_5 import a
+import importlib
 
 if __name__ == "__main__":
-
-    print(a)
+    module_name = "variable_load_5"
+    module = importlib.import_module(module_name)
+    
+    print(module.a)
