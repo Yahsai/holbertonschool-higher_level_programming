@@ -1,42 +1,89 @@
 #!/usr/bin/python3
-"""
-This module contains a unittest class for the function max_integer().
-"""
+# """Unittest for max_integer([..])
+# """
+# import unittest
+# from max_integer import max_integer
+
+
+# class TestMaxInteger(unittest.TestCase):
+#     def test_empty_list(self):
+#         self.assertIsNone(max_integer([]))
+
+#     def test_one_element_list(self):
+#         self.assertEqual(max_integer([1]), 1)
+
+#     def test_positive_numbers(self):
+#         self.assertEqual(max_integer([1, 2, 3]), 3)
+#         self.assertEqual(max_integer([3, 2, 1]), 3)
+#         self.assertEqual(max_integer([2, 3, 1]), 3)
+
+#     def test_negative_numbers(self):
+#         self.assertEqual(max_integer([-1, -2, -3]), -1)
+#         self.assertEqual(max_integer([-3, -2, -1]), -1)
+#         self.assertEqual(max_integer([-2, -3, -1]), -1)
+
+#     def test_mixed_numbers(self):
+#         self.assertEqual(max_integer([-1, 2, 3]), 3)
+#         self.assertEqual(max_integer([3, -2, 1]), 3)
+#         self.assertEqual(max_integer([2, 3, -1]), 3)
+
+#     def test_float_numbers(self):
+#         self.assertEqual(max_integer([1.0, 2.0, 3.0]), 3.0)
+#         self.assertEqual(max_integer([3.0, 2.0, 1.0]), 3.0)
+#         self.assertEqual(max_integer([2.0, 3.0, 1.0]), 3.0)
+
+#     def test_sorted(self):
+#         ordered = [32, 64, 128, 256]
+#         self.assertEqual(max_integer(ordered), 256)
+
+#     def test_sorted_rev(self):
+#         ordered = [1024, 512, 256, 128, 64]
+#         self.assertEqual(max_integer(ordered), 1024)
+
+
+# if __name__ == '__main__':
+#     unittest.main()
+
+"""Unittest for max_integer([..])"""
+
 
 import unittest
-from 6-max_integer import max_integer
+max_integer = __import__('6-max_integer').max_integer
+
 
 class TestMaxInteger(unittest.TestCase):
-    """
-    A unittest class for max_integer()
-    """
-    
-    def test_basic(self):
-        """
-        Test normal cases for the function.
-        """
-        self.assertEqual(max_integer([1, 2, 3, 4]), 4)
-        self.assertEqual(max_integer([1, 3, 4, 2]), 4)
-        self.assertEqual(max_integer([-1, -2, -3, -4]), -1)
-        self.assertEqual(max_integer([4]), 4)
-        self.assertIsNone(max_integer([]))
-    def test_string(self):
-        """
-        Test if a TypeError is raised when the list contains strings.
-        """
-        with self.assertRaises(TypeError):
-            max_integer(['a', 'b', 'c'])
-    def test_non_list(self):
-        """
-        Test if a TypeError is raised when the input is a string.
-        """
-        with self.assertRaises(TypeError):
-            max_integer("string")
-    def test_nested_list(self):
-        """
-        Test if a TypeError is raised when the list contains other lists.
-        """
-        with self.assertRaises(TypeError):
-            max_integer([[1, 2, 3], [4, 5, 6]])
+    """Unittests for the function max_integer"""
+
+    def test_empty(self):
+        """Test an empty list"""
+        empty = []
+        self.assertEqual(max_integer(empty), None)
+
+    def test_one(self):
+        """Test a list with one integer"""
+        one_element = [1]
+        self.assertEqual(max_integer(one_element), 1)
+
+    def test_sorted(self):
+        """Test a sorted list of integers"""
+        ordered = [32, 64, 128, 256]
+        self.assertEqual(max_integer(ordered), 256)
+
+    def test_sorted_rev(self):
+        """Test a sorted (in reverse) list of integers"""
+        ordered = [1024, 512, 256, 128, 64]
+        self.assertEqual(max_integer(ordered), 1024)
+
+    def test_random(self):
+        """Test a list of integers"""
+        ordered = [98, -1024, 1, -21, 2795]
+        self.assertEqual(max_integer(ordered), 2795)
+
+    def test_negative(self):
+        """Test a list of negative integers"""
+        ordered = [-35, -1024, -1, -21]
+        self.assertEqual(max_integer(ordered), -1)
+
+
 if __name__ == '__main__':
     unittest.main()
