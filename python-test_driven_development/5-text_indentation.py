@@ -1,28 +1,37 @@
 #!/usr/bin/python3
-"""
-    This module will have a
-    function that will print
-    a text with 2 new lines after
-    each of these characters:
-    ". ? :"
-"""
+""" prints a text with 2 new lines after each of these characters: ., ?and:"""
 
 
 def text_indentation(text):
     """
-    Function that prints a text
-    with 2 new lines after each
-    of the characters above.
-    First we check that what its
-    passed is a str, then proceed to check and print.
+    >>> text_indentation("")
+    <BLANKLINE>
+
+    >>> text_indentation('')
+    <BLANKLINE>
+
+    >>> text_indentation("?")
+    <BLANKLINE>
+
+    >>> text_indentation(":")
+    <BLANKLINE>
+
+    >>> text_indentation(".")
+    <BLANKLINE>
+
     """
     if type(text) is not str:
-        raise TypeError('text must be a string')
-    for let in range(len(text)):
-        if text[let] == '.' or text[let] == '?' or text[let] == ':':
-            print(text[let])
+        raise TypeError("text must be a string")
+    space = False  # flag to check if there is a space
+    for char in text:
+        if not space:
+            if char == ' ':
+                continue
+            else:
+                space = True
+        if char == '.' or char == '?' or char == ':':
+            print(char)
             print()
-        elif text[let] == " " and text[let - 1] in ['.', '?', ':']:
-            continue
+            space = False
         else:
-            print(text[let], end="")
+            print(char, end="")
