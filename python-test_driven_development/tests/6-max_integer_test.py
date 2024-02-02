@@ -1,18 +1,42 @@
 #!/usr/bin/python3
-"""Module to find the max integer in a list
+"""
+This module contains a unittest class for the function max_integer().
 """
 
+import unittest
+from 6-max_integer import max_integer
 
-def max_integer(list=[]):
-    """Function to find and return the max integer in a list of integers
-        If the list is empty, the function returns None
+class TestMaxInteger(unittest.TestCase):
     """
-    if len(list) == 0:
-        return None
-    result = list[0]
-    i = 1
-    while i < len(list):
-        if list[i] > result:
-            result = list[i]
-        i += 1
-    return result
+    A unittest class for max_integer()
+    """
+    
+    def test_basic(self):
+        """
+        Test normal cases for the function.
+        """
+        self.assertEqual(max_integer([1, 2, 3, 4]), 4)
+        self.assertEqual(max_integer([1, 3, 4, 2]), 4)
+        self.assertEqual(max_integer([-1, -2, -3, -4]), -1)
+        self.assertEqual(max_integer([4]), 4)
+        self.assertIsNone(max_integer([]))
+    def test_string(self):
+        """
+        Test if a TypeError is raised when the list contains strings.
+        """
+        with self.assertRaises(TypeError):
+            max_integer(['a', 'b', 'c'])
+    def test_non_list(self):
+        """
+        Test if a TypeError is raised when the input is a string.
+        """
+        with self.assertRaises(TypeError):
+            max_integer("string")
+    def test_nested_list(self):
+        """
+        Test if a TypeError is raised when the list contains other lists.
+        """
+        with self.assertRaises(TypeError):
+            max_integer([[1, 2, 3], [4, 5, 6]])
+if __name__ == '__main__':
+    unittest.main()
