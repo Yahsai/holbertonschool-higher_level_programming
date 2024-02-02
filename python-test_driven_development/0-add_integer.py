@@ -1,4 +1,4 @@
-/bin/python3
+#!/usr/bin/python3
 """add_integer - function
 Attribute:
     a: first integer
