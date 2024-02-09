@@ -1,5 +1,14 @@
 #!/usr/bin/python3
 def class_to_json(obj):
+    """
+    Convert an object to a JSON-serializable dictionary.
+
+    Args:
+    - obj: An instance of a class with serializable attributes (list, dictionary, string, integer, and boolean).
+
+    Returns:
+    - A dictionary representing the serialized form of the object.
+    """
     if not hasattr(obj, '__dict__'):
         raise TypeError("Input object must be an instance of a class")
 
@@ -44,3 +53,4 @@ if __name__ == "__main__":
     mj = class_to_json(m)
     print(type(mj))
     print(mj)
+
