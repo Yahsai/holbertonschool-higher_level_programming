@@ -25,8 +25,10 @@ def class_to_json(obj):
 
     return serializable_dict
 
-# Assuming your MyClass definition is in a module named '8-my_class'
 class MyClass:
+    """
+    A class with serializable attributes for JSON conversion.
+    """
     def __init__(self, name, number=0):
         self.__name = name
         self.number = number
@@ -53,4 +55,5 @@ if __name__ == "__main__":
     mj = class_to_json(m)
     print(type(mj))
     print(mj)
+
 
