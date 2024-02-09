@@ -1,14 +1,16 @@
 #!/usr/bin/python3
-class Example:
-    def __init__(self, name, age, data):
+#!/usr/bin/python3
+""" My class module
+"""
+
+
+class MyClass:
+    """ My class
+    """
+
+    def __init__(self, name):
         self.name = name
-        self.age = age
-        self.data = data
+        self.number = 0
 
-# Create an instance of the class
-obj = Example("John", 25, {"key": "value", "nested_list": [1, 2, 3], "is_student": True})
-
-# Convert the instance to a JSON-serializable dictionary
-result = class_to_json(obj)
-
-print(result)
+    def __str__(self):
+        return "[MyClass] {} - {:d}".format(self.name, self.number)
