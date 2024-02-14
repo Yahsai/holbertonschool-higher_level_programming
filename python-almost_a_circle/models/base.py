@@ -1,11 +1,18 @@
 #!/usr/bin/python3
+"""Base class"""
+from os import path
 import json
 import turtle
 
 class Base:
+    """atts for the base class"""
     __nb_objects = 0
 
     def __init__(self, id=None):
+        """init for the base class"""
+        Args:
+            id (int): id of the object
+        
         if id is not None:
             self.id = id
         else:
