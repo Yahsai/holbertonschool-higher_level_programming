@@ -2,8 +2,19 @@
 """ Rectangle class """
 from models.base import Base
 
+
 class Rectangle(Base):
+    """ Rectangle class inherits from Base class """
+
     def __init__(self, width, height, x=0, y=0, id=None):
+        """ init method for rectangle class
+        Args:
+            width (int): width of the rectangle
+            height (int): height of the rectangle
+            x (int): x position of the rectangle
+            y (int): y position of the rectangle
+            id (int): id of the rectangle
+        """
         super().__init__(id)
         self.width = width
         self.height = height
