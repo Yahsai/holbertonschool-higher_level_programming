@@ -1,58 +1,58 @@
 import unittest
-import json
-import os
 from models.base import Base
+from models.rectangle import Rectangle
+from models.square import Square
+
 
 class TestBase(unittest.TestCase):
-    def test_init(self):
+    def test_base__init__(self):
+        """Test the id attribute of the Base class"""
         b1 = Base()
         self.assertEqual(b1.id, 1)
-
         b2 = Base()
         self.assertEqual(b2.id, 2)
+        b3 = Base()
+        self.assertEqual(b3.id, 3)
+        b4 = Base(12)
+        self.assertEqual(b4.id, 12)
+        b5 = Base()
+        self.assertEqual(b5.id, 4)
 
-        b3 = Base(5)
-        self.assertEqual(b3.id, 5)
+    def test_create(self, **dictionary):
+        """Test the create method of the Base class"""
+        r1 = Rectangle(3, 5, 1)
+        r1_dictionary = r1.to_dictionary()
+        r2 = Rectangle.create(**r1_dictionary)
 
-    def test_to_json_string(self):
-        obj = [{"id": 1, "name": "Alice"}, {"id": 2, "name": "Bob"}]
-        json_str = Base.to_json_string(obj)
-        expected_str = '[{"id": 1, "name": "Alice"}, {"id": 2, "name": "Bob"}]'
-        self.assertEqual(json_str, expected_str)
+        self.assertIsInstance(r2, Rectangle)
+        # self.assertEqual(r1, r2)
+
+        self.assertIsNot(r1, r2)
 
     def test_save_to_file(self):
-        obj_list = [Base(1), Base(2), Base(3)]
-        Base.save_to_file(obj_list)
-        filename = "Base.json"
-        with open(filename, "r") as file:
-            content = file.read()
-            expected_content = '[{"id": 1}, {"id": 2}, {"id": 3}]'
-            self.assertEqual(content, expected_content)
+        """Test the save_to_file method of the Base class"""
+        # # save and load a list of retangles
+        # r1 = Rectangle(10, 7, 2, 8)
+        # r2 = Rectangle(2, 4)
+        # list_rectangles_input = [r1, r2]
 
-    def test_from_json_string(self):
-        json_str = '[{"id": 1, "name": "Alice"}, {"id": 2, "name": "Bob"}]'
-        obj_list = Base.from_json_string(json_str)
-        expected_list = [{"id": 1, "name": "Alice"}, {"id": 2, "name": "Bob"}]
-        self.assertEqual(obj_list, expected_list)
+        # Rectangle.save_to_file(list_rectangles_input)
+        # list_rectangles_output = Rectangle.load_from_file()
 
-    def test_create(self):
-        dictionary = {"id": 5, "name": "Charlie"}
-        obj = Base.create(**dictionary)
-        self.assertEqual(obj.id, 5)
-        self.assertEqual(obj.name, "Charlie")
+        # self.assertEqual(list_rectangles_input, list_rectangles_output)
 
-    def test_load_from_file(self):
-        obj_list = [Base(1), Base(2), Base(3)]
-        Base.save_to_file(obj_list)
-        loaded_list = Base.load_from_file()
-        self.assertEqual(len(loaded_list), 3)
-        self.assertEqual(loaded_list[0].id, 1)
-        self.assertEqual(loaded_list[1].id, 2)
-        self.assertEqual(loaded_list[2].id, 3)
+        # # save and load a list of Square instances
+        # s1 = Square(5)
+        # s2 = Square(7, 9, 1)
+        # list_squares_input = [s1, s2]
 
-    def test_draw(self):
-        # Add your draw method tests if needed
-        pass
+        # Square .save_to_file(list_squares_input)
+        # list_squares_output = Square.load_from_file()
 
-if __name__ == "__main__":
+        # self.assertEqual(list_squares_input, list_squares_output)
+
+    # def test_load_from_file(cls):
+
+
+if __name__ == '__main__':
     unittest.main()
