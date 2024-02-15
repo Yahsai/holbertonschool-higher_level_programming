@@ -1,30 +1,29 @@
 import unittest
 from models.rectangle import Rectangle
 
+
 class TestRectangle(unittest.TestCase):
-    def test_init(self):
-        # Test the constructor
-        r = Rectangle(5, 10, 2, 3, 1)
-        self.assertEqual(r.id, 1)
-        self.assertEqual(r.width, 5)
-        self.assertEqual(r.height, 10)
-        self.assertEqual(r.x, 2)
-        self.assertEqual(r.y, 3)
+    def test_area(self):
+        r = Rectangle(5, 10)
+        self.assertEqual(r.area(), 50)
+
+    def test_display(self):
+        r = Rectangle(3, 2)
+        self.assertEqual(r.display(), None)
 
     def test_str(self):
-        # Test the __str__ method
-        r = Rectangle(5, 10, 2, 3, 1)
-        self.assertEqual(str(r), "[Rectangle] (1) 2/3 - 5/10")
+        r = Rectangle(4, 6, 2, 1, 12)
+        self.assertEqual(str(r), "[Rectangle] (12) 2/1 - 4/6")
 
-    def test_width_getter_setter(self):
-        # Test the width getter and setter
-        r = Rectangle(5, 10, 2, 3, 1)
-        self.assertEqual(r.width, 5)
-
-        r.width = 15
-        self.assertEqual(r.width, 15)
-
-    # Add more tests as needed for other methods and edge cases
-
-if __name__ == '__main__':
-    unittest.main()
+    def test_update(self):
+        r = Rectangle(10, 10, 10, 10)
+        r.update(89)
+        self.assertEqual(str(r), "[Rectangle] (89) 10/10 - 10/10")
+        r.update(89, 2)
+        self.assertEqual(str(r), "[Rectangle] (89) 10/10 - 2/10")
+        r.update(89, 2, 3)
+        self.assertEqual(str(r), "[Rectangle] (89) 10/10 - 2/3")
+        r.update(89, 2, 3, 4)
+        self.assertEqual(str(r), "[Rectangle] (89) 4/10 - 2/3")
+        r.update(89, 2, 3, 4, 5)
+        self.assertEqual(str(r), "[Rectangle] (89) 4/5 - 2/3")
