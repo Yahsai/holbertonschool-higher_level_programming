@@ -78,9 +78,15 @@ class Rectangle(Base):
         return self.width * self.height
     
     def display(self):
-        """Prints the Rectangle instance with the character #."""
-        for _ in range(self.height):
-            print("#" * self.width)
+        """display the Rectangle using '#' """
+        for i in range(self.y):
+            print()
+        for i in range(self.height):
+            for j in range(self.x):
+                print(" ", end="")
+            for j in range(self.width):
+                print("#", end="")
+            print()
             
     def __str__(self):
         """return the string representation of the Rectangle """
