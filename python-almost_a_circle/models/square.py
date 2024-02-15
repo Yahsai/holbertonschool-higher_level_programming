@@ -31,10 +31,6 @@ class Square(Rectangle):
         self.width = value
         self.height = value
 
-    def __str__(self):
-        """Returns the string representation of the Square instance."""
-        return "[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y, self.width)
-
      def update(self, *args, **kwargs):
         """update method for square class
         Args:
