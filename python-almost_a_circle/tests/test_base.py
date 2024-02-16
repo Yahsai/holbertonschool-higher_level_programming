@@ -31,6 +31,18 @@ class TestBase(unittest.TestCase):
 
     def test_save_to_file(self):
         """Test the save_to_file method of the Base class"""
+        
+        s1 = Square(5)
+        s2 = Square(7, 9, 1)
+        list_squares_input = [s1, s2]
+
+        Square.save_to_file(list_squares_input)
+        list_squares_output = Square.load_from_file()
+
+        self.assertEqual(len(list_squares_input), len(list_squares_output))
+        self.assertIsInstance(list_squares_output[0], Square)
+        self.assertIsInstance(list_squares_output[1], Square)
+
         # # save and load a list of retangles
         # r1 = Rectangle(10, 7, 2, 8)
         # r2 = Rectangle(2, 4)
@@ -52,6 +64,30 @@ class TestBase(unittest.TestCase):
         # self.assertEqual(list_squares_input, list_squares_output)
 
     # def test_load_from_file(cls):
+    
+    #     """Test the load_from_file method of the Base class"""
+    def test_load_from_file(self):
+        """Test the load_from_file method of the Base class"""
+        # load a list of retangles
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        list_rectangles_input = [r1, r2]
+
+        Rectangle.save_to_file(list_rectangles_input)
+        list_rectangles_output = Rectangle.load_from_file()
+
+        self.assertEqual(list_rectangles_input, list_rectangles_output)
+
+        # load a list of Square instances
+        s1 = Square(5)
+        s2 = Square(7, 9, 1)
+        list_squares_input = [s1, s2]
+
+        Square.save_to_file(list_squares_input)
+        list_squares_output = Square.load_from_file()
+
+        self.assertEqual(list_squares_input, list_squares_output)
+
 
 
 if __name__ == '__main__':
