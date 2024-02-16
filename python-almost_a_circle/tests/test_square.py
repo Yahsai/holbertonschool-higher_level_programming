@@ -16,8 +16,8 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(s.height, 20)
 
     def test_update(self):
-        s = Square(5, 3, 4, 1)
-        s.update(2)
+        s = Square(4, 2, 1, 12)
+        s.update(13, 5, 3, 4)
         self.assertEqual(str(s), "[Square] (2) 3/4 - 5")
         s.update(3, 10)
         self.assertEqual(str(s), "[Square] (3) 3/4 - 10")
@@ -27,6 +27,9 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(str(s), "[Square] (5) 5/2 - 10")
 
     def test_to_dictionary(self):
-        s = Square(5, 3, 4, 1)
+        s = Square(4, 2, 1, 12)
         d = s.to_dictionary()
-        self.assertEqual(d, {'id': 1, 'size': 5, 'x': 3, 'y': 4})
+        self.assertEqual(d, {'id': 12, 'size': 4, 'x': 2, 'y': 0})
+        
+if __name__ == '__main__':
+    unittest.main()
